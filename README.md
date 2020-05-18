@@ -23,20 +23,20 @@ Build a virtual machine in a given subnet for testing network connectivity.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | admin\_user | The administrative username for this host. | `string` | `"azureadmin"` | no |
-| enable | Enable creation of test vm in this subnet. | `bool` | n/a | yes |
+| enable | Enable creation of vm in this subnet. | `bool` | `true` | no |
 | location | The Azure region | `string` | n/a | yes |
-| resource\_group\_name | The name of the resource group which will contain the vnet resources. | `string` | n/a | yes |
-| subnet\_id | The id of the subnet for the test vm. | `string` | n/a | yes |
-| testvm\_name | The name of the test host. | `string` | n/a | yes |
+| resource\_group\_name | The name of the resource group which will contain the resources. | `string` | n/a | yes |
+| subnet\_id | The id of the subnet for the vm. | `string` | n/a | yes |
+| vm\_name | The name of the host. | `string` | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| admin\_password | The administrative password on the test host. |
-| admin\_user | The administrative user on the test host. |
-| name | The name of the test host. |
-| private\_ip | The private IP of this test host. |
+| admin\_password | The administrative password on the host. |
+| admin\_user | The administrative user on the host. |
+| name | The name of the host. |
+| private\_ip | The private IP of this host. |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 <!-- markdownlint-restore -->

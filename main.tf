@@ -14,12 +14,12 @@ resource "random_password" "vmpw" {
 
 resource "azurerm_network_interface" "nic" {
   count               = var.enable ? 1 : 0
-  name                = var.testvm_name
+  name                = var.vm_name
   location            = var.location
   resource_group_name = var.resource_group_name
 
   ip_configuration {
-    name                          = "${var.testvm_name}-nic"
+    name                          = "${var.vm_name}-nic"
     subnet_id                     = var.subnet_id
     private_ip_address_allocation = "Dynamic"
   }
@@ -27,7 +27,7 @@ resource "azurerm_network_interface" "nic" {
 
 resource "azurerm_virtual_machine" "vm" {
   count                            = var.enable ? 1 : 0
-  name                             = var.testvm_name
+  name                             = var.vm_name
   location                         = var.location
   resource_group_name              = var.resource_group_name
   network_interface_ids            = [azurerm_network_interface.nic[0].id]
@@ -42,13 +42,13 @@ resource "azurerm_virtual_machine" "vm" {
     version   = "latest"
   }
   storage_os_disk {
-    name              = "${var.testvm_name}-osdisk"
+    name              = "${var.vm_name}-osdisk"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "StandardSSD_LRS"
   }
   os_profile {
-    computer_name  = var.testvm_name
+    computer_name  = var.vm_name
     admin_username = var.admin_user
     admin_password = random_password.vmpw[0].result
   }
