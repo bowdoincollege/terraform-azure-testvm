@@ -8,6 +8,7 @@ Build a virtual machine in a given subnet for testing network connectivity.
 
 | Name | Version |
 |------|---------|
+| terraform | >= 0.13 |
 | azurerm | ~> 2.0 |
 | random | ~> 2.2 |
 

@@ -1,10 +1,15 @@
-provider "azurerm" {
-  version = "~> 2.0"
-  features {}
-}
-
-provider "random" {
-  version = "~> 2.2"
+terraform {
+  required_version = ">= 0.13"
+  required_providers {
+    random = {
+      source  = "hashicorp/random"
+      version = "~> 2.2"
+    }
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "~> 2.0"
+    }
+  }
 }
 
 resource "random_password" "vmpw" {
