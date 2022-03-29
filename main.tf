@@ -12,10 +12,6 @@ terraform {
   }
 }
 
-provider "azurerm" {
-  features {}
-}
-
 resource "random_password" "vmpw" {
   count  = var.enable ? 1 : 0
   length = 16
